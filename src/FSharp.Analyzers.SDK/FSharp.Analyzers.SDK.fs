@@ -101,6 +101,7 @@ type CliContext =
         CheckFileResults: FSharpCheckFileResults
         TypedTree: FSharpImplementationFileContents option
         CheckProjectResults: FSharpCheckProjectResults
+        ProjectOptions: FSharpProjectOptions
     }
 
     interface Context
@@ -122,6 +123,7 @@ type EditorContext =
         CheckFileResults: FSharpCheckFileResults option
         TypedTree: FSharpImplementationFileContents option
         CheckProjectResults: FSharpCheckProjectResults option
+        ProjectOptions: FSharpProjectOptions
     }
 
     interface Context
@@ -196,6 +198,7 @@ module Utils =
         (fileName: string)
         (sourceText: ISourceText)
         ((parseFileResults: FSharpParseFileResults, checkFileResults: FSharpCheckFileResults))
+        (projectOptions: FSharpProjectOptions)
         : CliContext
         =
         {
@@ -205,6 +208,7 @@ module Utils =
             CheckFileResults = checkFileResults
             TypedTree = checkFileResults.ImplementationFile
             CheckProjectResults = checkProjectResults
+            ProjectOptions = projectOptions
         }
 
     let createFCS documentSource =

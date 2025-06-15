@@ -266,7 +266,7 @@ let getContextFor (opts: FSharpProjectOptions) isSignature source =
             raise (CompilerDiagnosticErrors diagErrors)
 
         let sourceText = SourceText.ofString source
-        Utils.createContext checkProjectResults fileName sourceText (parseFileResults, checkFileResults)
+        Utils.createContext checkProjectResults fileName sourceText (parseFileResults, checkFileResults) opts
     | Error e -> failwith $"typechecking file failed: %O{e}"
 
 let getContext (opts: FSharpProjectOptions) source = getContextFor opts false source

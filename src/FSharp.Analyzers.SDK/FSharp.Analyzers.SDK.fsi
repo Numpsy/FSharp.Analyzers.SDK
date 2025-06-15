@@ -69,6 +69,8 @@ type CliContext =
         /// A handle to the results of the entire project
         /// See <a href="https://fsharp.github.io/fsharp-compiler-docs/reference/fsharp-compiler-codeanalysis-fsharpcheckprojectresults.html">FSharpCheckProjectResults Type</a>
         CheckProjectResults: FSharpCheckProjectResults
+        /// Project stuff
+        ProjectOptions: FSharpProjectOptions
     }
 
     interface Context
@@ -101,6 +103,8 @@ type EditorContext =
         /// A handle to the results of the entire project
         /// See <a href="https://fsharp.github.io/fsharp-compiler-docs/reference/fsharp-compiler-codeanalysis-fsharpcheckprojectresults.html">FSharpCheckProjectResults Type</a>
         CheckProjectResults: FSharpCheckProjectResults option
+        /// Project stuff
+        ProjectOptions: FSharpProjectOptions
     }
 
     interface Context
@@ -184,4 +188,5 @@ module Utils =
         fileName: string ->
         sourceText: ISourceText ->
         parseFileResults: FSharpParseFileResults * checkFileResults: FSharpCheckFileResults ->
+        projectOptions: FSharpProjectOptions ->
             CliContext
